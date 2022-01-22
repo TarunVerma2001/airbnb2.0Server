@@ -1,0 +1,22 @@
+{
+  "name": "airbnb2.0server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TarunVerma2001/airbnb2.0Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TarunVerma2001/airbnb2.0Server/issues"
+  },
+  "homepage": "https://github.com/TarunVerma2001/airbnb2.0Server#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
