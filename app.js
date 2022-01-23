@@ -60,7 +60,7 @@ app.use(
 //allow other request to get access
 app.use(cors());
 
-//Routes
+app.use(require('./routes'))
 
 
 app.all('*', (req, res, next) => {
