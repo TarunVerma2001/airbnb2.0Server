@@ -6,6 +6,11 @@ const locationSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A Location must have a name!'],
     },
+    image: {
+      type: String,
+      default: 'London.jpg',
+      required: [true, 'A Location must have an Image!'],
+    },
     location: {
       // GeoJSON
       type: {
