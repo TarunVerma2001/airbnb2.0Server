@@ -17,7 +17,7 @@ exports.getAllHotels = async (req, res, next) => {
 
 exports.getHotel = async (req, res, next) => {
   try {
-    const hotel = await Location.findById(req.params.id);
+    const hotel = await Hotel.findById(req.params.id);
 
     if (!hotel) {
       return next(new AppError('No Hotel found with this Id!', 404));
