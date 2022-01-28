@@ -6,12 +6,12 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(wishListController.getAllLocations)
-  .post(wishListController.createLocation);
+  .get(wishListController.getAllWishLists)
+  .post(wishListController.createWishList);
 router
   .route('/:id')
-  .get(wishListController.getLocation)
-  .delete(wishListController.deleteLocation)
-  .patch(wishListController.updateLocation);
+  .get(wishListController.getWishList)
+  .delete(wishListController.deleteWishList)
+  .patch(wishListController.updateWishList);
 
 module.exports = router;
