@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const User = require('./../models/userModel');
 const locationSchema = new mongoose.Schema(
   {
     name: {
@@ -34,6 +33,14 @@ const locationSchema = new mongoose.Schema(
     timestams: true,
   }
 );
+
+//virtual-populate
+
+locationSchema.virtual('hotel', {
+  ref: 'Hotel',
+  foreignField: 'location',
+  localField: '_id',
+});
 
 const Location = mongoose.model('Location', locationSchema);
 module.exports = Location;

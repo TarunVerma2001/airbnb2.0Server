@@ -17,7 +17,7 @@ exports.getAllHotels = async (req, res, next) => {
 
 exports.getHotel = async (req, res, next) => {
   try {
-    const hotel = await Hotel.findById(req.params.id);
+    const hotel = await Hotel.findById(req.params.id).populate({path: "location hotelType", select:"name"});
 
     if (!hotel) {
       return next(new AppError('No Hotel found with this Id!', 404));
@@ -38,7 +38,9 @@ exports.createHotel = async (req, res, next) => {
       name: req.body.name,
       location: req.body.location,
       startingPrice: req.body.startingPrice,
+      endingPrice: req.body.endingPrice,
       capacity: req.body.capacity,
+      hotelType: req.body.hotelType,
     });
 
     res.status(201).json({

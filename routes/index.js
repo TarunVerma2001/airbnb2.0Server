@@ -7,5 +7,7 @@ const router = express.Router();
 router.use('/api/users', require('./userRoutes'));
 router.use('/api/locations', require('./locationRoutes'));
 router.use('/api/hotelTypes', require('./hotelTypeRoutes'));
+router.use('/api/hotel', require('./hotelRoutes'));
+
 
 module.exports = router;

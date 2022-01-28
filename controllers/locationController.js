@@ -17,7 +17,7 @@ exports.getAllLocations = async (req, res, next) => {
 
 exports.getLocation = async (req, res, next) => {
   try {
-    const location = await Location.findById(req.params.id);
+    const location = await Location.findById(req.params.id).populate({path: "hotel", select: "name"});
 
     if (!location) {
       return next(new AppError('No Location found with this Id!', 404));

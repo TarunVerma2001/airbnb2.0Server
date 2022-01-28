@@ -17,7 +17,7 @@ exports.getAllHotelType = async (req, res, next) => {
 
 exports.getHotelType = async (req, res, next) => {
   try {
-    const type = await HotelType.findById(req.params.id);
+    const type = await HotelType.findById(req.params.id).populate({path: "hotel"});
 
     if (!type) {
       return next(new AppError('No Hotel Type found with this Id!', 404));

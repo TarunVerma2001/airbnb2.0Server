@@ -6,7 +6,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(hotelController.getAllHotel)
+  .get(hotelController.getAllHotels)
   .post(hotelController.createHotel);
 router
   .route('/:id')
