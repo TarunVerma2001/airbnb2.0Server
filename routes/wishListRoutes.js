@@ -1,13 +1,14 @@
 const express = require('express');
-const authController = require('../controllers/authController');
+// const authController = require('../controllers/authController');
 const wishListController = require('../controllers/wishListController');
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(wishListController.getAllWishLists)
+  .get(wishListController.getAllWishList)
   .post(wishListController.createWishList);
+
 router
   .route('/:id')
   .get(wishListController.getWishList)
