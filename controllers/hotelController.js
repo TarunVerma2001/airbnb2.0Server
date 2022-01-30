@@ -1,9 +1,18 @@
 const Hotel = require('./../models/hotelModel');
 const AppError = require('./../utils/appError');
+const APIFeatures = require('./../utils/apiFeatures');
 
 exports.getAllHotels = async (req, res, next) => {
   try {
-    const hotels = await Hotel.find();
+    // const hotels = await Hotel.find().populate({path: "location"});
+
+    const features = new APIFeatures(Hotel.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const hotels = await features.query;
 
     res.status(200).json({
       success: true,

@@ -1,9 +1,18 @@
 const Location = require('./../models/locationModel');
 const AppError = require('./../utils/appError');
+const APIFeatures = require('./../utils/apiFeatures');
 
 exports.getAllLocations = async (req, res, next) => {
   try {
-    const locations = await Location.find();
+    // const locations = await Location.find();
+
+    const features = new APIFeatures(Location.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const locations = await features.query.populate({path: 'hotel'});
 
     res.status(200).json({
       success: true,
@@ -17,7 +26,10 @@ exports.getAllLocations = async (req, res, next) => {
 
 exports.getLocation = async (req, res, next) => {
   try {
-    const location = await Location.findById(req.params.id).populate({path: "hotel", select: "name"});
+    const location = await Location.findById(req.params.id).populate({
+      path: 'hotel',
+      select: 'name',
+    });
 
     if (!location) {
       return next(new AppError('No Location found with this Id!', 404));
